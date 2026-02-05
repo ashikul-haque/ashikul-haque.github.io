@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="140" height="44" viewBox="0 0 140 44">
+  <rect width="140" height="44" fill="white"/>
+  <g transform="translate(6,7)">
+    <path d="M10 0 L20 10 L10 20 L0 10 Z" fill="#E87500"/>
+    <text x="28" y="16" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="700" fill="#111">UTD</text>
+    <text x="28" y="30" font-family="Arial, Helvetica, sans-serif" font-size="11" font-weight="600" fill="#E87500">University of Texas at Dallas</text>
+  </g>
+</svg>

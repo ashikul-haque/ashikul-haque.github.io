@@ -1,10 +1,8 @@
 (function(){
-  const path = (location.pathname.split('/').pop() || 'index.html').toLowerCase();
-  document.querySelectorAll('.links a').forEach(a=>{
-    const href = (a.getAttribute('href') || '').toLowerCase();
-    if(href === path) a.classList.add('active');
-  });
-  const y = new Date().getFullYear();
-  const el = document.querySelector('[data-year]');
-  if(el) el.textContent = y;
+  var path = (location.pathname.split('/').pop() || 'index.html').toLowerCase();
+  var links = document.querySelectorAll('.nav a');
+  for(var i=0;i<links.length;i++){
+    var href = (links[i].getAttribute('href') || '').toLowerCase();
+    if(href.endsWith(path)) links[i].classList.add('active');
+  }
 })();

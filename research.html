@@ -1,100 +1,75 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Research | Md Ashikul Haque</title>
-  <meta name="description" content="Research overview for Md Ashikul Haque." />
-  <meta name="author" content="Md Ashikul Haque" />
-  <link rel="stylesheet" href="assets/style.css" />
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%237aa2ff'/%3E%3Cpath d='M19 44V20h7l6 11 6-11h7v24h-6V30l-7 12h-1l-7-12v14h-6z' fill='white'/%3E%3C/svg%3E"/>
-  <script type="application/ld+json">
-  {"@context": "https://schema.org", "@type": "Person", "name": "Md Ashikul Haque", "jobTitle": "PhD Candidate, Computer Science", "affiliation": "The University of Texas at Dallas", "email": "mailto:mdashikul.haque@utdallas.edu", "address": {"@type": "PostalAddress", "addressLocality": "Dallas", "addressRegion": "TX", "addressCountry": "US"}, "url": "https://ashikul-haque.github.io", "sameAs": ["https://scholar.google.com/citations?user=11vTHPYAAAAJ"]}
-  </script>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Md Ashikul Haque | Research</title>
+  <link rel="stylesheet" href="/assets/style.css"/>
 </head>
 <body>
-  <header class="nav">
-    <div class="nav-inner">
-      <div class="brand">
+<header class="header">
+  <div class="header-inner">
+    <div class="brand">
+      <img src="/assets/utd-mark.svg" alt="UTD mark"/>
+      <div class="brand-title">
         <div class="name">Md Ashikul Haque</div>
-        <div class="role">PhD Candidate, Computer Science — University of Texas at Dallas</div>
+        <div class="affil">PhD Candidate, Department of Computer Science</div>
       </div>
-      <nav class="links" aria-label="Primary navigation">
-        <a href="index.html">About</a>
-        <a href="research.html">Research</a>
-        <a href="publications.html">Publications</a>
-        <a href="teaching.html">Teaching</a>
-        <a href="service.html">Service</a>
-        <a href="cv.html">CV</a>
-      </nav>
     </div>
-  </header>
+    <nav class="nav" aria-label="Main navigation">
+      <a href="/index.html">Home</a>
+      <a href="/research.html">Research</a>
+      <a href="/publications.html">Publications</a>
+      <a href="/service.html">Services</a>
+      <a href="/teaching.html">Teaching</a>
+      <a href="/cv.html">CV</a>
+    </nav>
+  </div>
+</header>
+<main class="main">
+  <div class="layout">
 
-  <main class="container">
-    
-<section class="hero">
-  <h1>Research</h1>
-  <p>
-    My work spans secure and reliable LPWAN communication, coexistence among heterogeneous networks,
-    and learning-driven optimization under real-world constraints.
-  </p>
-</section>
+<aside class="sidebar">
+  <img class="headshot" src="/assets/headshot.jpg" alt="Headshot" onerror="this.onerror=null;this.src='/assets/avatar.svg';"/>
+  <div class="s-name">Md Ashikul Haque</div>
+  <div class="s-title">PhD Candidate</div>
 
-<section class="grid">
-  <div class="card">
-    <h2>Selected research directions</h2>
+  <div class="s-dept"><a href="https://cs.utdallas.edu/">Department of Computer Science</a></div>
+  <div class="s-univ"><a href="https://www.utdallas.edu/">University of Texas at Dallas</a></div>
 
-    <h3>Signal-level cross-technology communication (CTC)</h3>
-    <ul>
-      <li>Implemented an SDR-based TX/RX pipeline bridging LR-FHSS and LoRa, including receiver-side detection/correction and end-to-end benchmarking.</li>
-    </ul>
-
-    <h3>Learning-based coexistence management</h3>
-    <ul>
-      <li>Implemented a deep Q-learning coexistence framework in PyTorch and evaluated performance across dense coexistence scenarios using NS-3 and controlled experiments.</li>
-    </ul>
-
-    <h3>Generative coordination (under review)</h3>
-    <ul>
-      <li>Designed a hypernetwork-based coordination layer that synthesizes mutually exclusive policy updates from model-level parameter exchange among multiple learning-enabled networks.</li>
-    </ul>
-
-    <h3>Jamming defense and robustness</h3>
-    <ul>
-      <li>Implemented and evaluated receiver/gateway-side recovery and multi-gateway diversity methods under reactive and collaborative jamming.</li>
-    </ul>
-
-    <h3>MAC protocol design for LPWAN</h3>
-    <ul>
-      <li>Co-designed Burst-MAC for burst traffic with predictable access behavior; evaluated reliability/latency/energy tradeoffs via experiments and simulation.</li>
-    </ul>
+  <div class="contact">
+    <div class="row"><span class="label">Email:</span><br/>mdashikul.haque@utdallas.edu</div>
+    <div class="row"><span class="label">Phone:</span> +1 (515) 598-6458</div>
   </div>
 
-  <aside class="card">
-    <h2>Tools &amp; platforms</h2>
-    <ul>
-      <li>GNU Radio, USRP B200 SDR</li>
-      <li>NS-3 simulation, MATLAB analysis</li>
-      <li>Python (PyTorch, Pandas), C/C++</li>
-      <li>Docker, Git, Linux</li>
-    </ul>
+  <div class="addr">The University of Texas at Dallas<br/>800 W Campbell Rd<br/>Richardson, TX 75080</div>
 
-    <div class="hr"></div>
-    <h2>Want to collaborate?</h2>
-    <p>
-      Email me with a short description of the problem and any relevant constraints (hardware, regulations, datasets, testbeds).
-    </p>
-    <div class="btn-row">
-      <a class="btn" href="mailto:mdashikul.haque@utdallas.edu">Email</a>
-      <a class="btn" href="publications.html">Publications</a>
-    </div>
-  </aside>
+  <div class="side-links">
+    <a href="/assets/CV.pdf">Curriculum Vitae</a>
+    <a href="/assets/resume.pdf">Resume</a>
+    <a href="https://scholar.google.com/citations?user=11vTHPYAAAAJ">Google Scholar</a>
+  </div>
+</aside>
+
+<section class="content">
+  
+<img class="banner" src="/assets/banner.jpg" alt="Banner" onerror="this.onerror=null;this.src='/assets/banner.svg';"/>
+
+<p>
+My work spans secure and reliable LPWAN communication, learning based coexistence management, and signal level cross technology
+communication between heterogeneous PHY layers.
+</p>
+
+<div class="section-title">Selected directions</div>
+<p><b>Cross technology communication</b>: signal level design bridging LR FHSS and LoRa, including receiver side detection and correction.</p>
+<p><b>Learning based coexistence</b>: deep reinforcement learning for coexistence management under dense deployments.</p>
+<p><b>Jamming defense</b>: gateway side recovery and multi gateway diversity under reactive and collaborative jamming.</p>
+
 </section>
 
-    <div class="footer">
-      © <span data-year>2026</span> Md Ashikul Haque. Built with plain HTML/CSS and hosted on GitHub Pages.
-    </div>
-  </main>
-  <script src="assets/site.js"></script>
+  </div>
+</main>
+<div class="footer">© 2026 Md Ashikul Haque. Hosted on GitHub Pages.</div>
+<script src="/assets/site.js"></script>
 </body>
 </html>
