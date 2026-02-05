@@ -1,3 +1,7 @@
-# Md Ashikul Haque — GitHub Pages Website
+# GitHub Pages site
 
-Repo name must be **ashikul-haque.github.io**.
+Upload all files to the repo root (index.html must be at top level).
+
+## Paper PDFs
+Put your paper PDFs in: assets/papers/
+Filenames must match the links in publications.html

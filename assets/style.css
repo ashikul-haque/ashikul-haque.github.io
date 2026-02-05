@@ -1,12 +1,11 @@
-/* UTD-style plain academic layout: left contact column, right content column */
-
 :root{
   --text:#111;
-  --muted:#444;
-  --link:#0b63c7;
+  --muted:#333;
+  --link:#1a0dab;
   --border:#e6e6e6;
   --utd-orange:#E87500;
   --utd-green:#1f7a1f;
+  --title-red:#c00000;
   --max: 1180px;
   --sidebar: 300px;
 }
@@ -23,12 +22,9 @@ body{
 }
 
 a{ color: var(--link); text-decoration: underline; }
-a:hover{ color:#084f9d; }
+a:hover{ color:#0b57d0; }
 
-.header{
-  border-bottom: 1px solid var(--border);
-  background:#fff;
-}
+.header{ border-bottom: 1px solid var(--border); background:#fff; }
 .header-inner{
   max-width: var(--max);
   margin: 0 auto;
@@ -39,30 +35,13 @@ a:hover{ color:#084f9d; }
   gap: 18px;
 }
 
-.brand{
-  display:flex;
-  align-items:flex-start;
-  gap: 14px;
-}
-.brand img{
-  height: 38px;
-  width: auto;
-  display:block;
-}
-.brand-title{
-  display:flex;
-  flex-direction:column;
-  gap: 2px;
-}
+.brand{ display:flex; align-items:flex-start; gap: 14px; }
+.brand img{ height: 38px; width: auto; display:block; }
 .brand-title .name{
   font-size: 30px;
   font-weight: 700;
   letter-spacing: .2px;
   line-height: 1.05;
-}
-.brand-title .affil{
-  font-size: 13px;
-  color: var(--muted);
 }
 
 .nav{
@@ -80,10 +59,7 @@ a:hover{ color:#084f9d; }
   padding: 6px 2px;
 }
 .nav a:hover{ text-decoration: underline; }
-.nav a.active{
-  font-weight: 700;
-  color:#000;
-}
+.nav a.active{ font-weight: 700; color:#000; }
 
 .main{
   max-width: var(--max);
@@ -91,106 +67,62 @@ a:hover{ color:#084f9d; }
   padding: 18px 18px 28px 18px;
 }
 
-.layout{
-  display:grid;
-  grid-template-columns: var(--sidebar) 1fr;
-  gap: 40px;
-}
+.layout{ display:grid; grid-template-columns: var(--sidebar) 1fr; gap: 40px; }
 
 @media (max-width: 980px){
   :root{ --sidebar: 1fr; }
   .layout{ grid-template-columns: 1fr; gap: 24px; }
-  .header-inner{ align-items:flex-start; flex-direction:column; }
+  .header-inner{ flex-direction:column; }
   .nav{ justify-content:flex-start; }
 }
 
-.sidebar{
-  padding-top: 8px;
-}
+.sidebar{ padding-top: 8px; }
 .headshot{
-  width: 170px;
-  height: 170px;
+  width: 170px; height: 170px;
   object-fit: cover;
   display:block;
   border: 1px solid var(--border);
   background:#f7f7f7;
 }
-.s-name{
-  margin-top: 18px;
-  font-weight: 700;
-  font-size: 16px;
-}
-.s-title{
-  margin-top: 6px;
-  font-size: 14px;
-  color: var(--muted);
-}
-.s-dept{
-  margin-top: 18px;
-  font-size: 16px;
-  font-weight: 700;
-}
-.s-dept a{
-  color: var(--utd-green);
-  text-decoration: underline;
-}
-.s-univ{
-  margin-top: 10px;
-  font-size: 22px;
-  font-weight: 700;
-}
-.s-univ a{
-  color: var(--utd-orange);
-  text-decoration: none;
-}
+.s-name{ margin-top: 18px; font-weight: 700; font-size: 18px; }
+.s-title{ margin-top: 6px; font-size: 14px; color:#444; }
+
+.s-dept{ margin-top: 18px; font-size: 16px; font-weight: 700; }
+.s-dept a{ color: var(--utd-green); text-decoration: underline; }
+.s-univ{ margin-top: 10px; font-size: 22px; font-weight: 700; }
+.s-univ a{ color: var(--utd-orange); text-decoration: none; }
 .s-univ a:hover{ text-decoration: underline; }
 
-.contact{
-  margin-top: 18px;
-  font-size: 14px;
-}
-.contact .row{
-  margin-top: 10px;
-}
-.label{
-  font-weight: 700;
-}
+.contact{ margin-top: 18px; font-size: 14px; }
+.contact .row{ margin-top: 10px; }
+.label{ font-weight: 700; }
 
-.addr{
-  margin-top: 14px;
-  color: var(--muted);
-  font-size: 14px;
-  line-height: 1.4;
-}
+.addr{ margin-top: 14px; color:#444; font-size: 14px; line-height: 1.4; }
 
-.side-links{
-  margin-top: 18px;
-}
-.side-links a{
-  display:block;
-  margin-top: 12px;
-  font-size: 16px;
-}
+.side-links{ margin-top: 16px; }
+.side-links a{ display:block; margin-top: 12px; font-size: 16px; }
 
-.content .banner{
+.content p{ margin: 14px 0; color:#222; }
+
+.banner{
   width: 100%;
-  height: 170px;
+  height: 180px;
   border: 1px solid var(--border);
   object-fit: cover;
   background:#f2f2f2;
   display:block;
+  margin-bottom: 14px;
 }
 
-.content p{
-  margin: 14px 0;
-  color:#222;
-}
+.h3{ margin-top: 18px; font-weight: 700; color: var(--title-red); font-size: 16px; }
 
-.section-title{
-  margin-top: 22px;
-  font-weight: 700;
-  color: #c00000;
-}
+ul{ margin: 10px 0 0 18px; padding: 0; }
+li{ margin: 7px 0; }
+
+.pub-year{ margin-top: 18px; font-weight: 700; }
+.pub-list{ margin-top: 8px; }
+
+.small-note{ color:#444; font-size: 13px; }
 
 .footer{
   max-width: var(--max);

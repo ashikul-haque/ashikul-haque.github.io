@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">
-  <rect width="512" height="512" fill="#eaeaea"/>
-  <circle cx="256" cy="210" r="88" fill="#cfcfcf"/>
-  <path d="M120 430c14-84 92-130 136-130s122 46 136 130H120z" fill="#cfcfcf"/>
-  <text x="256" y="488" text-anchor="middle" font-family="Arial" font-size="16" fill="#666">Upload headshot: assets/headshot.jpg</text>
+  <rect width="512" height="512" fill="#f3f4f6"/>
+  <circle cx="256" cy="208" r="88" fill="#d1d5db"/>
+  <path d="M120 430c14-84 92-130 136-130s122 46 136 130H120z" fill="#d1d5db"/>
+  <text x="256" y="486" text-anchor="middle" font-family="Arial" font-size="16" fill="#6b7280">Add headshot: assets/headshot.jpg</text>
 </svg>
