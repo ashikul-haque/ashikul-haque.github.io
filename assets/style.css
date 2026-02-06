@@ -57,7 +57,7 @@ a:hover{ color:#0b57d0; }
 .nav a{
   color:#333;
   text-decoration:none;
-  font-size: 14px;
+  font-size: 16px;
   padding: 6px 2px;
 }
 .nav a:hover{ text-decoration: underline; }
@@ -78,7 +78,7 @@ a:hover{ color:#0b57d0; }
   .nav{ justify-content:flex-start; }
 }
 
-.sidebar{ padding-top: 8px; }
+.sidebar{ padding-top: 8px;  font-size: 16px; }
 .headshot{
   width: 170px; height: 170px;
   object-fit: cover;
@@ -194,3 +194,5 @@ li{ margin: 7px 0; }
 
 /* Single-column layout (no sidebar) */
 .layout.layout-single{ grid-template-columns: 1fr; gap: 0; }
+
+.sidebar a{ font-size: 16px; }
