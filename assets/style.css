@@ -159,3 +159,18 @@ li{ margin: 7px 0; }
   margin: 14px 0;
 }
 .muted{ color:#444; }
+
+
+/* Teaching formatting */
+.teaching-list{ margin-top: 10px; }
+.teaching-list li{ margin: 16px 0; }
+.t-head{
+  display:flex;
+  justify-content: space-between;
+  gap: 12px;
+  align-items: baseline;
+}
+.t-years{ color:#444; }
+.t-org{ margin-top: 3px; color:#222; }
+.t-courses{ margin-top: 3px; color:#222; }
+.t-label{ font-weight: 700; }
