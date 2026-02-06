@@ -171,3 +171,20 @@ li{ margin: 7px 0; }
 .t-org{ margin-top: 3px; color:#222; }
 .t-courses{ margin-top: 3px; color:#222; }
 .t-label{ font-weight: 700; }
+
+
+/* Override: center and enlarge social icons */
+.icon-link{
+  display:flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  width: 34px !important;
+  height: 34px !important;
+  padding: 0 !important;
+}
+.icon-link img{
+  width: 32px !important;
+  height: 32px !important;
+  display:block !important;
+  margin: 0 !important;
+}
