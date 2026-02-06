@@ -146,8 +146,8 @@ li{ margin: 7px 0; }
   border: 1px solid var(--border);
   border-radius: 6px;
   text-decoration:none;
-}
-.icon-link img{ width: 26px; height: 26px; display:block; }
+ padding: 0; }
+.icon-link img{ width: 30px; height: 30px; display:block; }
 .icon-link:hover{ background:#f7f7f7; }
 
 /* Teaching page formatting */
