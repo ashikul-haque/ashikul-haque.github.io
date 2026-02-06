@@ -152,3 +152,10 @@ li{ margin: 7px 0; }
 }
 .icon-link img{ width: 20px; height: 20px; display:block; }
 .icon-link:hover{ background:#f7f7f7; }
+
+/* Teaching page formatting */
+.teaching-list{ margin-top: 10px; }
+.teaching-list li{
+  margin: 14px 0;
+}
+.muted{ color:#444; }
