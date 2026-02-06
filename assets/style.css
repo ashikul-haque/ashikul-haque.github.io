@@ -132,3 +132,23 @@ li{ margin: 7px 0; }
   font-size: 13px;
   border-top: 1px solid var(--border);
 }
+
+/* Icon links (Scholar, LinkedIn) */
+.icon-links{
+  margin-top: 16px;
+  display:flex;
+  gap: 10px;
+  align-items:center;
+}
+.icon-link{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  width: 34px;
+  height: 34px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  text-decoration:none;
+}
+.icon-link img{ width: 20px; height: 20px; display:block; }
+.icon-link:hover{ background:#f7f7f7; }
