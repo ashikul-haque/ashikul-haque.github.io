@@ -101,6 +101,21 @@ a:hover{ color:#0b57d0; }
 
 .addr{ margin-top: 14px; color:#444; font-size: 14px; line-height: 1.4; }
 
+/* CV / Resume links on homepage sidebar */
+.side-docs{
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px solid var(--border);
+}
+.side-docs a{
+  display:block;
+  margin-top: 8px;
+  color:#333;
+  text-decoration:none;
+  font-size: 15px;
+}
+.side-docs a:hover{ text-decoration: underline; }
+
 .side-links{ margin-top: 16px; }
 .side-links a{ display:block; margin-top: 12px; font-size: 16px; }
 
