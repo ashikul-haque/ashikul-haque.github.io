@@ -139,6 +139,11 @@ li{ margin: 7px 0; }
 .pub-year{ margin-top: 18px; font-weight: 700; }
 .pub-list{ margin-top: 8px; }
 
+/* Paper title links: black instead of the site link blue.
+   Underline is inherited from the base `a` rule so they still read as links. */
+.pub-list a{ color:#000; }
+.pub-list a:hover{ color:#000; }
+
 .small-note{ color:#444; font-size: 13px; }
 
 .footer{
