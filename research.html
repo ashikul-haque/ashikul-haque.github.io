@@ -3,17 +3,17 @@
 <head>
   <link rel="icon" href="/assets/utd-mark.svg"/>
   <meta name="twitter:image" content="https://ashikul-haque.github.io/assets/utd-mark.svg"/>
-  <meta name="twitter:description" content="Research overview by Md Ashikul Haque on LPWAN and wireless IoT systems, resilient communication, coexistence, jamming mitigation, and MAC and scheduling."/>
+  <meta name="twitter:description" content="Research overview by Md Ashikul Haque on LPWAN and wireless IoT systems, anti-jamming, cross-technology communication, learning-based coexistence, and real-time scheduling."/>
   <meta name="twitter:title" content="Research | Md Ashikul Haque"/>
   <meta name="twitter:card" content="summary"/>
   <meta property="og:image" content="https://ashikul-haque.github.io/assets/utd-mark.svg"/>
   <meta property="og:url" content="https://ashikul-haque.github.io/research.html"/>
   <meta property="og:type" content="website"/>
-  <meta property="og:description" content="Research overview by Md Ashikul Haque on LPWAN and wireless IoT systems, resilient communication, coexistence, jamming mitigation, and MAC and scheduling."/>
+  <meta property="og:description" content="Research overview by Md Ashikul Haque on LPWAN and wireless IoT systems, anti-jamming, cross-technology communication, learning-based coexistence, and real-time scheduling."/>
   <meta property="og:title" content="Research | Md Ashikul Haque"/>
   <link rel="canonical" href="https://ashikul-haque.github.io/research.html"/>
   <meta name="robots" content="index, follow"/>
-  <meta name="description" content="Research overview by Md Ashikul Haque on LPWAN and wireless IoT systems, resilient communication, coexistence, jamming mitigation, and MAC and scheduling."/>
+  <meta name="description" content="Research overview by Md Ashikul Haque on LPWAN and wireless IoT systems, anti-jamming, cross-technology communication, learning-based coexistence, and real-time scheduling."/>
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width,initial-scale=1"/>
   <title>Md Ashikul Haque</title>
@@ -30,6 +30,7 @@
     </div>
     <nav class="nav" aria-label="Main navigation">
       <a href="/index.html">Home</a>
+      <a href="/research.html">Research</a>
       <a href="/publications.html">Publications</a>
       <a href="/service.html">Services</a>
       <a href="/awards.html">Awards</a>
@@ -41,17 +42,17 @@
   <div class="layout layout-single">
 <section class="content">
   
-<p>
-My research develops <b>systems</b>, <b>protocols</b>, and <b>AI-assisted methods</b> for LPWAN and wireless IoT networks. I focus on resilient and adaptive communication under interference, coexistence, and jamming, spanning LoRa anti-jamming defenses, learning-based coexistence management, cross-technology communication from LR-FHSS to LoRa, and MAC and scheduling mechanisms for bursty, reliable, and time-sensitive traffic in IoT and cyber-physical settings. I validate these designs through PyTorch-based learning, NS-3 simulation, SDR prototyping with GNU Radio and USRP, and outdoor or testbed experiments.
-</p>
+<div class="h3">Research</div>
 
-<div class="h3">Selected Topics</div>
-<ul>
-  <li><b>Cross-technology communication</b>: signal-level interoperability between LR-FHSS and LoRa, including receiver-side detection and correction.</li>
-  <li><b>AI-assisted coexistence and coordination</b>: deep reinforcement learning and coordinated learning agents for dense LPWAN deployments sharing spectrum.</li>
-  <li><b>Resilient wireless communication</b>: anti-jamming techniques for single and collaborative attackers in LoRa and LPWAN settings.</li>
-  <li><b>MAC, scheduling, and protocol design</b>: measurement-driven MAC and scheduling mechanisms for burst traffic, reliability, and time-sensitive wireless, industrial IoT, and cyber-physical operation.</li>
-</ul>
+<p>My research addresses how a system stays correct and on time when the resources it depends on are contested. The contention may come from interference, from a deliberate attacker, from a competing network, or from more deadlines than the network can serve. My work covers three areas.</p>
+
+<p><b>Resilient and secure wireless communication.</b> I develop physical-layer techniques that allow commodity LoRa gateways to decode packets while under jamming attack. I presented the first anti-jamming approach for LPWANs (EWSN &rsquo;23), and later work extended it from a single jammer to multiple attackers that jam collaboratively (IoTDI &rsquo;24, MobiHoc &rsquo;25, EWSN &rsquo;26). These techniques improve packet reception rate by up to 100&times; and per-packet energy consumption by up to 136&times;, and they require no change at the LoRa nodes and no modification to the physical layer of commodity devices.</p>
+
+<p><b>Cross-technology communication and coexistence.</b> LR-FHSS extends uplink coverage to tens of kilometers, but LoRa downlinks fail beyond 1 to 2 km, which leaves those nodes unreachable for acknowledgment and control. I repurpose the LR-FHSS physical layer as a waveform synthesizer that generates LoRa-compatible chirps, with receiver-side reconstruction that corrects hop discontinuity, offset drift, and phase distortion. This improves long-range reliability by up to 79% (SenSys &rsquo;26). In related work, I use deep reinforcement learning at the LoRa network server to manage coexistence in dense deployments, which keeps the learning off the energy-constrained nodes (INFOCOM &rsquo;25).</p>
+
+<p><b>Real-time scheduling for cyber-physical and agentic systems.</b> I design MAC and scheduling mechanisms for bursty and mixed-criticality traffic in industrial wireless sensor-actuator networks (RTSS &rsquo;24, ICCCN &rsquo;26). In ReMix, reclaiming redundant airtime during high-criticality intervals improves deadline satisfaction from 32.9% to 85.9%. I have recently extended this line to deadline-aware token scheduling for LLM agents that drive physical I/O (RTSS &rsquo;26).</p>
+
+<p><b>Evaluation.</b> I build and measure real systems. My experiments use SDR prototypes on USRP B200 with GNU Radio, outdoor deployments at kilometer scale, multi-node embedded testbeds, NS-3 simulation, and deep reinforcement learning models in PyTorch.</p>
 
 </section>
 
