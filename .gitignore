@@ -1,0 +1,9 @@
+# Private CV variant. Contains Manuscripts Under Review and is never published.
+assets/CV_private.tex
+assets/CV_private.pdf
+
+# LaTeX build artifacts
+assets/*.aux
+assets/*.log
+assets/*.out
+assets/*.synctex.gz
