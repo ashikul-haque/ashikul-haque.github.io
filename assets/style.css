@@ -145,7 +145,20 @@ li{ margin: 7px 0; }
 .pub-list a{ color:#000; }
 .pub-list a:hover{ color:#000; }
 
-.small-note{ color:#444; font-size: 13px; }
+/* Job market notice. It is a direct child of .layout and spans both columns,
+   so it stays at the top of the page when the grid collapses on narrow screens. */
+.job-market{
+  grid-column: 1 / -1;
+  margin: 0 0 -16px 0;
+  padding: 12px 14px;
+  border: 1px solid var(--utd-orange);
+  border-left: 5px solid var(--utd-orange);
+  background: #fff7ef;
+  color: #7a3d00;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.5;
+}
 
 .footer{
   max-width: var(--max);
