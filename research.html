@@ -3,17 +3,17 @@
 <head>
   <link rel="icon" href="/assets/utd-mark.svg"/>
   <meta name="twitter:image" content="https://ashikul-haque.github.io/assets/utd-mark.svg"/>
-  <meta name="twitter:description" content="Research overview by Md Ashikul Haque: deadline-aware scheduling for LLM agents, cross-technology communication, anti-jamming for LPWANs, coexistence management, and real-time scheduling for industrial wireless networks."/>
+  <meta name="twitter:description" content="Research of Md Ashikul Haque on dependable low-power wide-area networking under contention: anti-jamming for LPWANs, learning-based coexistence, real-time scheduling for industrial wireless and LLM agents, and cross-technology and direct-to-satellite links."/>
   <meta name="twitter:title" content="Research | Md Ashikul Haque"/>
   <meta name="twitter:card" content="summary"/>
   <meta property="og:image" content="https://ashikul-haque.github.io/assets/utd-mark.svg"/>
   <meta property="og:url" content="https://ashikul-haque.github.io/research.html"/>
   <meta property="og:type" content="website"/>
-  <meta property="og:description" content="Research overview by Md Ashikul Haque: deadline-aware scheduling for LLM agents, cross-technology communication, anti-jamming for LPWANs, coexistence management, and real-time scheduling for industrial wireless networks."/>
+  <meta property="og:description" content="Research of Md Ashikul Haque on dependable low-power wide-area networking under contention: anti-jamming for LPWANs, learning-based coexistence, real-time scheduling for industrial wireless and LLM agents, and cross-technology and direct-to-satellite links."/>
   <meta property="og:title" content="Research | Md Ashikul Haque"/>
   <link rel="canonical" href="https://ashikul-haque.github.io/research.html"/>
   <meta name="robots" content="index, follow"/>
-  <meta name="description" content="Research overview by Md Ashikul Haque: deadline-aware scheduling for LLM agents, cross-technology communication, anti-jamming for LPWANs, coexistence management, and real-time scheduling for industrial wireless networks."/>
+  <meta name="description" content="Research of Md Ashikul Haque on dependable low-power wide-area networking under contention: anti-jamming for LPWANs, learning-based coexistence, real-time scheduling for industrial wireless and LLM agents, and cross-technology and direct-to-satellite links."/>
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width,initial-scale=1"/>
   <title>Md Ashikul Haque</title>
@@ -41,24 +41,44 @@
 <main class="main">
   <div class="layout layout-single">
 <section class="content">
-  
+
 <div class="h3">Research</div>
 
-<p>My research addresses how a system stays correct and on time when the resource it depends on is contested. That resource may be the token budget of an agent working against a control deadline, or the airtime, spectrum, and energy of a wireless network under interference, attack, or competition. Much of this work targets low-power wide-area networks (LPWANs), which connect battery-powered sensors to a gateway across several kilometers, and in particular LoRa, the radio technology that dominates such deployments. More recently I have carried the same question into large language model (LLM) agents that act on the physical world. My work covers five areas.</p>
+<p>My research asks how a low-power wireless system stays correct and on time when the resource it depends on is contested. That resource may be spectrum taken by a jammer, airtime taken by a neighboring operator, or a token budget that runs out before a control deadline. Most of this work targets low-power wide-area networks (LPWANs), which connect battery-powered sensors to a gateway across several kilometers. In particular it targets LoRa, the radio technology that dominates such deployments.</p>
 
-<p><b>Real-time scheduling for LLM agents.</b> An agent that drives a physical actuator inherits the deadline of the control loop it sits in, and token generation is slow enough that the deadline is often the binding constraint. Treating the agent as a best-effort service is therefore not sufficient once its output reaches physical input and output. I work on deadline-aware token scheduling for LLM agents in this setting (RTSS &rsquo;26).</p>
+<p>One design principle runs through all of it. The end device is the most constrained part of an Internet of Things (IoT) system, because a single battery has to carry it for years. Therefore the defense, the coordination, and the scheduling belong in the infrastructure, which is the gateway, the network server, or the ground segment. My dissertation, <i>Dependable Low-Power Wide-Area Networking under Contention: Jamming, Coexistence, and Deadlines</i>, develops that principle in four parts.</p>
 
-<p><b>Cross-technology communication.</b> Long Range Frequency Hopping Spread Spectrum (LR-FHSS) extends uplink coverage to tens of kilometers, but LoRa downlinks fail beyond 1 to 2 km, which leaves those nodes unreachable for acknowledgment and control. I repurpose the LR-FHSS physical layer as a waveform synthesizer that generates LoRa-compatible chirps, with receiver-side reconstruction that corrects hop discontinuity, offset drift, and phase distortion. This improves long-range reliability by up to 79% (SenSys &rsquo;26).</p>
+<div class="h4">Jamming</div>
 
-<p><b>Resilient and secure wireless communication.</b> An attacker can silence an entire deployment by transmitting noise on the channel that the sensors use, and the sensors themselves are too limited in power and energy to defend against it. I develop physical-layer techniques that let commodity LoRa gateways decode packets while the attack is in progress. I presented the first anti-jamming approach for LPWANs (EWSN &rsquo;23), and later work extended it from a single jammer to multiple attackers that jam collaboratively (IoTDI &rsquo;24, MobiHoc &rsquo;25, EWSN &rsquo;26). These techniques require no change at the LoRa nodes and no modification to the physical layer of commodity devices, so they apply to networks that are already deployed.</p>
+<p>An attacker can silence a whole deployment by transmitting noise on the channel the sensors use. The sensors are too limited in energy to detect the attack, and far too limited to answer it. I therefore build defenses that run at the gateway and decode packets while the attack is still in progress.</p>
 
-<p><b>Coexistence management.</b> LPWAN deployments increasingly share spectrum with one another, and a node has no energy budget to spend negotiating for it. I use deep reinforcement learning at the LoRa network server to manage coexistence in dense deployments, which keeps the learning off the energy-constrained nodes (INFOCOM &rsquo;25, ICLR &rsquo;26 workshop).</p>
+<p>I published the first anti-jamming work for LPWANs, which assigns channels and transmission power through a game between the network and the jammer, and it improves packet reception by up to 31.83&times; (EWSN &rsquo;23). Every design since then has handled a stronger attacker, and none of them changes anything at the node. Gateway-side decoding recovers LoRa packets under a single jammer and improves packet reception by 83.91&times; (IoTDI &rsquo;24). A defense against jammers that transmit LoRa chirps rather than noise improves it by 106.56&times; (MobiHoc &rsquo;25). A defense against jammers that collaborate improves it by 100&times; (EWSN &rsquo;26).</p>
 
-<p><b>Real-time scheduling for industrial networks.</b> An industrial control loop is useful only if its messages arrive before their deadlines. I design medium access control (MAC) and scheduling mechanisms for bursty and mixed-criticality traffic in industrial wireless sensor-actuator networks (RTSS &rsquo;24, ICCCN &rsquo;26). In ReMix, reclaiming redundant airtime during high-criticality intervals improves deadline satisfaction from 32.9% to 85.9%.</p>
+<p>The state-of-the-art work before this line addressed jamming by positioning at least three gateways in a line, and it was effective only against a single jammer. My designs impose no such placement and no overhead at the LoRa nodes, so they apply to networks that are already deployed.</p>
 
-<p><b>Evaluation.</b> I build and measure real systems. My experiments use software-defined radio (SDR) prototypes on USRP B200 with GNU Radio, outdoor deployments at kilometer scale, multi-node embedded testbeds, NS-3 simulation, and deep reinforcement learning models in PyTorch.</p>
+<div class="h4">Coexistence</div>
 
-<p class="muted">The papers behind each area are listed on the <a href="/publications.html">publications page</a>.</p>
+<p>LPWAN deployments now share unlicensed spectrum with one another, and a node has no energy budget to spend on negotiating for it. I moved the learning off the nodes and onto the LoRa Network Server, which assigns transmission parameters across a dense deployment with deep reinforcement learning. Against the decentralized state of the art this improves packet reception by 70.97% and cuts energy consumption by 62.91% (INFOCOM &rsquo;25). A follow-on line of work coordinates several operators whose controllers all learn at the same time, without asking any of them to disclose their traffic (ICLR &rsquo;26 workshop).</p>
+
+<div class="h4">Deadlines</div>
+
+<p>A control loop is useful only if its messages arrive before their deadlines, and contention is what makes that hard. Burst-MAC handles the traffic bursts that follow an event in a LoRa network, and it improves packet reception by 4.5&times; during a burst (RTSS &rsquo;24). ReMix reclaims airtime that a mixed-criticality schedule reserves and never uses, which raises high-criticality deadline satisfaction in industrial wireless sensor-actuator networks from 32.9% to 85.9% (ICCCN &rsquo;26).</p>
+
+<p>The same question now reaches large language model (LLM) agents. An agent that drives a physical actuator inherits the deadline of the control loop it sits in, and generating tokens takes time that the deadline may not allow. Treating such an agent as a best-effort service is therefore not sufficient. Deadline-aware token scheduling cuts the critical failure rate of an LLM serving system from 0.925 to 0.238 (RTSS &rsquo;26).</p>
+
+<div class="h4">Reach</div>
+
+<p>Long Range Frequency Hopping Spread Spectrum (LR-FHSS) carries an uplink for tens of kilometers, including an uplink to low Earth orbit, but a LoRa downlink fails beyond 1 to 2 km. The nodes in that gap receive no acknowledgment and no control. I repurpose the LR-FHSS physical layer as a waveform synthesizer that produces LoRa-compatible chirps, with receiver-side reconstruction that corrects hop discontinuity, offset drift, and phase distortion. A LoRa receiver decodes these transmissions with no change to its RF front end, and reliability at long range improves by up to 79% (SenSys &rsquo;26).</p>
+
+<div class="h4">Where this goes next</div>
+
+<p>I am building a research program on dependable wireless and cyber-physical systems, and it runs in five directions. Direct-to-satellite IoT needs per-message delivery guarantees and a defense against attacks on the hop sequence, because a pass over a ground station lasts only a few minutes. AI agents that act on the physical world need real-time guarantees on the serving path, not only on the network. Connected vehicles need cooperative perception that a scheduler can admit against a deadline and a risk bound. City-scale coexistence needs coordination among operators who will not disclose their traffic to one another. Anti-jamming needs to move from one channel to all of them at once, which I plan to do by repurposing a concurrent-reception base station as a multi-channel special node.</p>
+
+<div class="h4">Evaluation</div>
+
+<p>I build and measure real systems. My experiments use software-defined radio (SDR) prototypes on USRP B200 with GNU Radio, outdoor deployments at kilometer scale, commercial off-the-shelf (COTS) LoRa nodes and gateways, a 15-node Tmote Sky testbed, and a three-car MentorPi testbed. At scale I use NS-3 and CARLA simulation, and PyTorch for the learning components.</p>
+
+<p class="muted">The papers behind each part are listed on the <a href="/publications.html">publications page</a>.</p>
 
 </section>
 
