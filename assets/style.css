@@ -159,6 +159,10 @@ li{ margin: 7px 0; }
   font-weight: 700;
   line-height: 1.5;
 }
+.job-docs{ margin-top: 6px; font-size: 15px; }
+.job-docs a{ color:#7a3d00; text-decoration: underline; }
+.job-docs a:hover{ color: var(--utd-orange); }
+.job-docs span{ margin: 0 6px; color:#c48a55; }
 
 .footer{
   max-width: var(--max);
