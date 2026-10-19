@@ -87,7 +87,7 @@ Office: ECSS 4.413, 800 W Campbell Rd, Richardson, TX 75080, USA}\par
 
 \sect{Research Highlights}
 
-Nine peer-reviewed conference papers, eight as first author, at venues including ACM \venue{SenSys}, IEEE \venue{RTSS}, IEEE \venue{INFOCOM}, and ACM \venue{MobiHoc}, seven of them at conferences with acceptance rates from 14\% to 25\%. Published the first anti-jamming work for LPWANs and built gateway-side decoders that raise packet reception under jamming by up to 106.56\x{} with no change to the LoRa end devices. Published the first work that enables communication from Long Range Frequency Hopping Spread Spectrum (LR-FHSS) to LoRa, which improves reliability at long range by up to 79\%. Designed deadline-aware token scheduling for LLM agents that control physical devices, which cut the share of critical requests that were rejected or late from 92.5\% to 23.8\% in a vLLM stress test.
+Nine peer-reviewed conference papers, eight as first author, at venues including ACM \venue{SenSys}, IEEE \venue{RTSS}, IEEE \venue{INFOCOM}, and ACM \venue{MobiHoc}, seven of them at conferences with acceptance rates from 14\% to 25\%. Published the first anti-jamming work for LPWANs and built gateway-side decoders that raise packet reception by up to 106.56\x{} over the best prior LoRa defense with no change to the LoRa end devices. Published the first work that enables communication from Long Range Frequency Hopping Spread Spectrum (LR-FHSS) to LoRa, which improves reliability at long range by up to 79\%. Designed deadline-aware token scheduling for LLM agents that control physical devices, with a proven schedulability condition for admitted critical requests; the artifact passed RTSS 2026 Artifact Evaluation.
 
 \sect{Education}
 
@@ -179,11 +179,11 @@ Conference talk at ACM/IEEE IoTDI 2024, CPS-IoT Week 2024, Hong Kong, China, May
 \org{Wayne State University}{Detroit, Michigan, USA}
 \role{Graduate Research Assistant, Department of Computer Science}{Fall 2022 -- Summer 2025}
 Advisor at both universities: \textbf{Prof.\ Abusayeed Saifullah}\par\nobreak
-\titem Designed gateway-side and network-server-side defenses that recover LoRa packets under single, LoRa-based, collaborative, and spatially distributed jammers, evaluated on ten-node outdoor testbeds of USRP B200 gateways and commodity LoRa nodes with up to three USRP jammers.
-\titem Built learning-based coexistence management at the LoRa Network Server and disclosure-free coordination among LoRaWAN operators, evaluated on an indoor USRP and Dragino testbed and in PyTorch, NS-3, and a demodulator-level simulation of 32,000 devices across 8 operators.
-\titem Designed real-time medium access and mixed-criticality scheduling for LoRa and industrial wireless sensor-actuator networks, evaluated on LoRa devices and a 15-node Tmote Sky testbed, and built deadline-aware schedulers for LLM serving on vLLM/ROCm and llama.cpp/Vulkan and for cooperative perception on three MentorPi robot cars and in 1,020 CARLA runs.
+\titem Designed gateway-side and network-server-side defenses that recover LoRa packets under single, LoRa-based, collaborative, and spatially distributed jammers, evaluated on ten-node outdoor testbeds of USRP B200 gateways and commodity LoRa nodes with up to four USRP jammers.
+\titem Built learning-based coexistence management at the LoRa Network Server, evaluated on an indoor USRP and Dragino testbed and in NS-3, and unilateral admission control for coexisting LoRaWAN operators, evaluated on an outdoor testbed of five operators with commercial SX1302 gateways and ChirpStack servers and in simulations of up to 128,000 devices.
+\titem Designed real-time medium access and mixed-criticality scheduling for LoRa and industrial wireless sensor-actuator networks, evaluated on LoRa devices and a 15-node Tmote Sky testbed, and built deadline-aware schedulers for LLM serving on vLLM/ROCm and llama.cpp/Vulkan and for cooperative perception on two MentorPi robot cars and in CARLA-driven simulation.
 \titem Built cross-technology communication from LR-FHSS to LoRa on GNU Radio and USRP B200, evaluated outdoors in a suburban area.
-\titem Designed per-message delivery certificates for direct-to-satellite LR-FHSS, evaluated on a testbed of ten commercial LR-FHSS nodes and six USRP radios driving a calibrated emulator, and signature-bound frame recovery, evaluated in simulation and on an indoor four-USRP testbed.
+\titem Designed per-message delivery certificates for direct-to-satellite LR-FHSS, evaluated on eight commercial LR-FHSS radios (Semtech LR1120) and two USRP radios that replay satellite passes, and signature-bound frame recovery, evaluated in simulation and on an indoor four-USRP testbed.
 
 \gap\org{Dhaka Electric Supply Company Limited}{Dhaka, Bangladesh}
 \role{Assistant Engineer, ICT Division}{2020 -- 2021}
