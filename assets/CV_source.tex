@@ -1,273 +1,273 @@
-% Build with: xelatex -interaction=nonstopmode -halt-on-error -output-directory=assets assets/CV_source.tex
-\documentclass[letterpaper,10pt]{article}
-
+% Website CV: the dossier cv.tex without the manuscripts-under-review section. Build: pdflatex CV_source.tex (output renamed to CV.pdf)
+% Layout follows Renjie Zhao's CV (rz.pdf): Palatino, a centered "NAME | CURRICULUM VITAE" title,
+% a dingbat contact line, uppercase ruled section headings, and section content indented 16.4pt.
+% Pre-change copy: cv_pre_rz.tex.
+\documentclass[letterpaper,11pt]{article}
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
-\usepackage{mathpazo}
-\usepackage[margin=0.65in]{geometry}
-\usepackage[hidelinks]{hyperref}
+\usepackage{palatino}
+\usepackage{pifont}
+\usepackage{xcolor}
+\usepackage[left=0.75in,right=0.75in,top=0.61in,bottom=0.6in]{geometry}
+\usepackage[colorlinks=true,urlcolor=blue,linkcolor=black,pdftitle={Md Ashikul Haque: Curriculum Vitae},pdfauthor={Md Ashikul Haque}]{hyperref}
 \usepackage{tabularx}
 \usepackage{array}
-\usepackage{enumitem}
-\usepackage{titlesec}
-\usepackage{fancyhdr}
-\usepackage{xcolor}
 \usepackage[none]{hyphenat}
-\usepackage{microtype}
+\usepackage[protrusion=false]{microtype}
+\usepackage{needspace}
 
-\pagestyle{fancy}
-\fancyhf{}
-\renewcommand{\headrulewidth}{0pt}
-\fancyfoot[L]{\footnotesize Updated October 2026}
-\fancyfoot[C]{\footnotesize Md Ashikul Haque \textbullet\ Curriculum Vitae \textbullet\ \thepage}
-
+\pagestyle{empty}
 \setlength{\parindent}{0pt}
 \setlength{\parskip}{0pt}
 \setlength{\tabcolsep}{0pt}
+\clubpenalty=10000
+\widowpenalty=10000
 \emergencystretch=1.5em
-
-\titleformat{\section}
-  {\large\bfseries\scshape}
-  {}
-  {0pt}
-  {}
-  [\vspace{-0.45em}\rule{\linewidth}{0.4pt}\vspace{0.1em}]
-\titlespacing*{\section}{0pt}{0.72em}{0.28em}
-
-\setlist[itemize]{leftmargin=1.2em,itemsep=1pt,topsep=2pt,parsep=0pt,partopsep=0pt,label=\textbullet}
-\setlist[enumerate]{leftmargin=1.8em,itemsep=2pt,topsep=2pt,parsep=0pt,partopsep=0pt}
-
+\newlength{\ind}\setlength{\ind}{16.4pt}
 \newcolumntype{Y}{>{\raggedright\arraybackslash}X}
-\newcommand{\entry}[2]{\begin{tabularx}{\linewidth}{@{}Y r@{}}#1 & #2\end{tabularx}}
-\newcommand{\subentry}[1]{#1\par}
-\newcommand{\pubitem}[2]{\noindent\makebox[2.5em][l]{[#1]}#2\par}
+
+\newcommand{\x}{\texttimes}
+\newcommand{\me}{\textbf{Md Ashikul Haque}}
+% Conference acronyms are bold throughout (advisor feedback, Sep 2026).
+\newcommand{\venue}[1]{\textbf{#1}}
+\newcommand{\TBD}[1]{\textcolor{red}{[#1]}}
+
+% \gap puts 6.7pt between items, except for the first item under a heading.
+\newif\iffirst
+\newif\ifhead % true right after a \sect heading, whose Needspace already reserves room for the first entry
+\newcommand{\gap}{\iffirst\global\firstfalse\else\vspace{6.7pt}\fi}
+
+% Section heading: bold uppercase at the margin, a full-width 0.4pt rule 6.4pt below its baseline,
+% and the section content indented by \ind.
+\newcommand{\sect}[1]{\par\leftskip=0pt\addvspace{7.7pt}\Needspace{8\baselineskip}%
+  {\normalsize\bfseries\MakeUppercase{#1}\par}\nobreak
+  \vskip-\prevdepth\vskip6.2pt\hrule height 0.4pt\nobreak\prevdepth=0pt\vskip2.0pt\nobreak
+  \leftskip=\ind\global\firsttrue\global\headtrue}
+\newcommand{\subhead}[2][4]{\par\gap\ifhead\global\headfalse\else\Needspace{#1\baselineskip}\fi% optional #1: lines that must fit below it
+  {\fontsize{10.95}{12}\selectfont\bfseries #2\par}\nobreak\global\firsttrue}
+
+% Entry lines: bold organization and location, then italic role and dates.
+\newcommand{\org}[2]{\par\ifhead\global\headfalse\else\Needspace{3\baselineskip}\fi%
+  {\fontsize{10.95}{12}\selectfont\bfseries #1\hfill #2\par}\nobreak}
+\newcommand{\role}[2]{\par\textit{#1}\hfill\textit{#2}\par\nobreak}
+
+% Bullets with no hanging indent: \bitem is spaced by 6.7pt, \titem is tight.
+\newcommand{\bitem}{\par\gap\global\headfalse$\bullet$\ }
+\newcommand{\titem}{\par\global\firstfalse\global\headfalse$\bullet$\ }
+% Right-aligned date: stays at the end of the last line when it fits, otherwise gets its own line.
+\newcommand{\yr}[1]{{\unskip\nobreak\hfil\penalty50\hskip2em\hbox{}\nobreak\hfil\textit{#1}\parfillskip=0pt\finalhyphendemerits=0\par}}
+\newlength{\refw}
+
+% Publication entry: [label] "title" / authors / venue / optional line (acceptance ratio or distinction).
+\newcommand{\plink}[2]{{\hypersetup{urlcolor=black}\href{#1}{#2}}}\newcommand{\pub}[5]{\par\gap\global\headfalse{\interlinepenalty=10000 \rightskip=0pt plus 1fil
+  \textbf{[#1]\ ``#2''}\\#3\\#4\if\relax\detokenize{#5}\relax\else\\#5\fi\par}}
+\newcommand{\ven}[2]{\textit{#1 \textbf{(#2)}}}
+\newcommand{\acc}[3]{(#1 papers accepted out of #2, acceptance ratio: #3\%)}
+\newcommand{\accr}[1]{(acceptance ratio: #1\%)}
+\newcommand{\csep}{\hspace{12.6pt}$\bullet$\hspace{12.6pt}}
 
 \begin{document}\sloppy
 
-\begin{center}
-{\LARGE\bfseries MD ASHIKUL HAQUE}\par
-\vspace{4pt}
-{\small
-\href{mailto:mdashikul.haque@utdallas.edu}{mdashikul.haque@utdallas.edu}
-\enspace | \enspace
-+1 (515) 598 6458
-\enspace | \enspace
-\href{https://ashikul-haque.github.io}{ashikul-haque.github.io}\par
-Google Scholar:
-\href{https://scholar.google.com/citations?user=11vTHPYAAAAJ}{scholar.google.com/citations?user=11vTHPYAAAAJ}
-}
-\end{center}
+{\centering\huge\bfseries MD ASHIKUL HAQUE $|$ CURRICULUM VITAE\par}
+\vspace{5.5pt}
+{\small\ding{38}~+1 (515) 598 6458\csep
+\ding{41}~\href{mailto:mdashikul.haque@utdallas.edu}{\textit{mdashikul.haque@utdallas.edu}}\csep
+\ding{224}~\href{https://ashikul-haque.github.io}{\textit{Personal Website}}\csep
+\ding{43}~\href{https://scholar.google.com/citations?user=11vTHPYAAAAJ}{\textit{Google Scholar}}\\
+Department of Computer Science, University of Texas at Dallas\\
+Office: ECSS 4.413, 800 W Campbell Rd, Richardson, TX 75080, USA}\par
+\vspace{5pt}
+\small
 
-\section{Education}
+\sect{Research Interests}
 
-\entry{\textbf{PhD, Computer Science}}{Expected May 2027}\par
-University of Texas at Dallas, USA\par
-Dissertation: \emph{Dependable Low-Power Wide-Area Networking under Contention: Jamming, Coexistence, and Deadlines}\par
-Advisor: \textbf{Prof. Abusayeed Saifullah}
+\bitem \textbf{Internet of Things (IoT) and Wireless Networked Systems:} anti-jamming, coexistence, and satellite connectivity for low-power wide-area networks (LPWANs).
+\bitem \textbf{Real-Time and Cyber-Physical Systems (CPS):} real-time scheduling for physical artificial intelligence (AI), from large language model (LLM) agents to connected vehicles.
+\bitem \textbf{AI for IoT and CPS:} reinforcement learning and generative AI for networked systems.
 
-\vspace{4pt}
+\sect{Research Highlights}
 
-\entry{\textbf{MSc, Computer Science}}{2024}\par
-Wayne State University, USA
+Nine peer-reviewed conference papers, eight as first author, at venues including ACM \venue{SenSys}, IEEE \venue{RTSS}, IEEE \venue{INFOCOM}, and ACM \venue{MobiHoc}, seven of them at conferences with acceptance rates from 14\% to 25\%. Published the first anti-jamming work for LPWANs and built gateway-side decoders that raise packet reception under jamming by up to 106.56\x{} with no change to the LoRa end devices. Published the first work that enables communication from Long Range Frequency Hopping Spread Spectrum (LR-FHSS) to LoRa, which improves reliability at long range by up to 79\%. Designed deadline-aware token scheduling for LLM agents that control physical devices, which cut the share of critical requests that were rejected or late from 92.5\% to 23.8\% in a vLLM stress test.
 
-\vspace{4pt}
+\sect{Education}
 
-\entry{\textbf{BSc, Computer Science and Engineering}}{2018}\par
-Bangladesh University of Engineering and Technology, Bangladesh
+\org{University of Texas at Dallas}{Richardson, Texas, USA}
+\role{PhD in Computer Science}{Expected May 2027}
+Dissertation: \textit{Dependable Low-Power Wide-Area Networking under Contention: Jamming, Coexistence, and Deadlines}\par
+Advisor: \textbf{Prof.\ Abusayeed Saifullah} (NSF CAREER Award 2019)\par
+\org{Wayne State University}{Detroit, Michigan, USA}
+\role{MSc in Computer Science}{2024}
+\org{Bangladesh University of Engineering and Technology (BUET)}{Dhaka, Bangladesh}
+\role{BSc in Computer Science and Engineering}{2018}
 
-\section{Research Interests}
+\Needspace{11\baselineskip}
+\sect{Conference Publications}
 
-Anti-Jamming and Physical-Layer Security for Low-Power Wide-Area Networks (LPWANs) \textbullet\ Coexistence among Learning-Enabled Networks \textbullet\ Real-Time and Mixed-Criticality Scheduling \textbullet\ Cross-Technology and Direct-to-Satellite Links \textbullet\ Deadline-Aware Scheduling for Large Language Model (LLM) Agents and Connected Vehicles
+Note: Each published paper's title links to its full text.\par\global\firstfalse
 
-\vspace{4pt}
+\pub{C9}{\plink{https://ashikul-haque.github.io/assets/papers/rtss2026.pdf}{Deadline-Aware Token Scheduling for Physical-I/O LLM Agents}}
+ {\me{} and Abusayeed Saifullah}
+ {\ven{IEEE Real-Time Systems Symposium}{RTSS}, 2026}
+ {\acc{50}{350}{14.3}\\Artifact passed the RTSS 2026 Artifact Evaluation.}
+\pub{C8}{\plink{https://doi.org/10.1145/3774906.3802771}{Enabling Cross Technology Communication from LR-FHSS to LoRa}}
+ {\me{}, Aakriti Jain, Venkata Prashant Modekurthy, and Abusayeed Saifullah}
+ {\ven{ACM/IEEE International Conference on Embedded Artificial Intelligence and Sensing Systems}{SenSys}, CPS-IoT~Week~2026}
+ {(52 papers accepted out of 263 in the November round, acceptance ratio: 19.8\%)\\\textbf{To our knowledge, the first cross-technology communication from LR-FHSS to LoRa.}}
+\pub{C7}{\plink{https://doi.org/10.3217/mb62-wy55}{Decoding LoRa Packets under Collaborative Jamming Attacks}}
+ {\me{} and Abusayeed Saifullah}
+ {\ven{International Conference on Embedded Wireless Systems and Networks}{EWSN}, 2026}
+ {\acc{15}{71}{21.1}}
+\pub{C6}{\plink{https://doi.org/10.1109/icccn69946.2026.11662752}{ReMix: Resource-Reclaiming Mixed-Criticality Scheduling for Industrial IoT}}
+ {\me{} and Abusayeed Saifullah}
+ {\ven{International Conference on Computer Communications and Networks}{ICCCN}, 2026}
+ {\accr{25}}
+\pub{C5}{\plink{https://doi.org/10.1145/3704413.3764442}{Mitigating Jamming Attacks in LoRa Networks: A Defense Strategy against LoRa-Based Jammers}}
+ {\me{} and Abusayeed Saifullah}
+ {\ven{ACM International Symposium on Theory, Algorithmic Foundations, and Protocol Design for Mobile Networks and Mobile Computing}{MobiHoc}, 2025}
+ {\acc{39}{169}{23.1}}
+\pub{C4}{\plink{https://doi.org/10.1109/infocom55648.2025.11044466}{Deep Reinforcement Learning Based Coexistence Management in LPWAN}}
+ {\me{}, Abusayeed Saifullah, and Haibo Zhang}
+ {\ven{IEEE International Conference on Computer Communications}{INFOCOM}, 2025}
+ {\acc{272}{1458}{18.7}}
+\pub{C3}{\plink{https://doi.org/10.1109/iotdi61053.2024.00017}{Handling Jamming Attacks in a LoRa Network}}
+ {\me{} and Abusayeed Saifullah}
+ {\ven{ACM/IEEE Conference on Internet of Things Design and Implementation}{IoTDI}, CPS-IoT~Week~2024}
+ {}
+\pub{C2}{\plink{https://doi.org/10.1109/rtss62706.2024.00022}{Burst-MAC: A MAC Protocol for Handling Burst Traffic in LoRa Network}}
+ {Aakriti Jain, \me{}, Abusayeed Saifullah, and Haibo Zhang}
+ {\ven{IEEE Real-Time Systems Symposium}{RTSS}, 2024}
+ {\acc{32}{140}{22.9}}
+\pub{C1}{\plink{https://ashikul-haque.github.io/assets/papers/ewsn2023.pdf}{A Game-Theoretic Approach for Mitigating Jamming Attacks in LPWAN}}
+ {\me{} and Abusayeed Saifullah}
+ {\ven{International Conference on Embedded Wireless Systems and Networks}{EWSN}, 2023}
+ {\textbf{To our knowledge, the first anti-jamming work in LPWAN.}}
 
-\textbf{Research Summary.} I build low-power wireless systems that stay correct and on time when the resource they depend on is contested by an attacker, by neighboring networks, or by a deadline. Defense against jamming and coexistence with other networks are very challenging in LPWANs for the Internet of Things (IoT). Solutions designed for other wireless networks cannot be adopted directly, because LPWAN devices have limited computation, low transmission power, and small batteries. My work covers physical-layer defenses that keep LoRa networks decoding under jamming attacks, learning-based coexistence management for dense LPWAN deployments, medium access control (MAC) and mixed-criticality scheduling for industrial wireless networks, cross-technology communication from Long Range Frequency Hopping Spread Spectrum (LR-FHSS) to LoRa, and deadline-aware token scheduling for LLM agents that drive physical actuators. I validate these designs on software-defined radio (SDR) prototypes with GNU Radio and USRP B200, on commercial off-the-shelf (COTS) LoRa hardware and multi-node testbeds, and in PyTorch, NS-3, and CARLA at scale.
+\sect{Workshop Publications}
+\pub{W2}{\plink{https://ashikul-haque.github.io/assets/papers/iclr2026workshop.pdf}{Coordinating Coexisting Learning Agents in Shared Spectrum via Parameter Space Complementarity}}
+ {\me{}, Abusayeed Saifullah, and Haibo Zhang}
+ {\textit{ICLR 2026 Workshop on Agents in the Wild: Safety, Security, and Beyond}, 2026}
+ {}
+\pub{W1}{\plink{https://doi.org/10.1145/3631461.3631474}{Scalable Real-Time Control in Industrial Cyber-Physical Systems}}
+ {\me{}, Dali Ismail, and Abusayeed Saifullah}
+ {\textit{Workshop on Software-Defined Networking for Cyber-Physical System Automation (SDN-CPS), co-located with ICDCN}, pp.~353--358, 2024}
+ {}
 
-\section{Conference Publications}
+\sect{Research Funding and Proposals}
 
-Each paper's title links to its full text.
+\bitem Contributed to the writing of an NSF proposal on real-time cooperative perception for connected vehicles, with \textbf{Prof.\ Abusayeed Saifullah} as principal investigator \yr{2026}
+\bitem My doctoral research has been supported by five NSF awards (CNS-2301757, CAREER-2306486, CNS-2306745, CNS-2601685, and CNS-2602744) and one ONR award (N00014-23-1-2151), all with \textbf{Prof.\ Abusayeed Saifullah} as principal investigator \yr{2022 -- Present}
 
-\vspace{3pt}
+\sect{Awards and Honors}
 
-\pubitem{C9}{\textbf{Md Ashikul Haque}, Abusayeed Saifullah. \href{https://ashikul-haque.github.io/assets/papers/rtss2026.pdf}{\emph{Deadline-Aware Token Scheduling for Physical-I/O LLM Agents}}. In Proc. IEEE Real-Time Systems Symposium (RTSS 2026). Acceptance rate: 14\% (50 of 350).}
-\vspace{2pt}
-\pubitem{C8}{\textbf{Md Ashikul Haque}, Aakriti Jain, Venkata Prashant Modekurthy, Abusayeed Saifullah. \href{https://doi.org/10.1145/3774906.3802771}{\emph{Enabling Cross Technology Communication from LR-FHSS to LoRa}}. In Proc. ACM/IEEE International Conference on Embedded Artificial Intelligence and Sensing Systems (SenSys 2026), CPS-IoT Week 2026. Acceptance rate: 19.8\% (52 of 263).}
-\vspace{2pt}
-\pubitem{C7}{\textbf{Md Ashikul Haque}, Abusayeed Saifullah. \href{https://doi.org/10.3217/mb62-wy55}{\emph{Decoding LoRa Packets under Collaborative Jamming Attacks}}. In Proc. 23rd International Conference on Embedded Wireless Systems and Networks (EWSN 2026). Acceptance rate: 21\% (15 of 71).}
-\vspace{2pt}
-\pubitem{C6}{\textbf{Md Ashikul Haque}, Abusayeed Saifullah. \href{https://doi.org/10.1109/icccn69946.2026.11662752}{\emph{ReMix: Resource-Reclaiming Mixed-Criticality Scheduling for Industrial IoT}}. In Proc. The 35th International Conference on Computer Communications and Networks (ICCCN 2026). Acceptance rate: 25\%.}
-\vspace{2pt}
-\pubitem{C5}{\textbf{Md Ashikul Haque}, Abusayeed Saifullah. \href{https://doi.org/10.1145/3704413.3764442}{\emph{Mitigating Jamming Attacks in LoRa Networks: A Defense Strategy against LoRa-Based Jammers}}. In Proc. ACM International Symposium on Theory, Algorithmic Foundations, and Protocol Design for Mobile Networks and Mobile Computing (MobiHoc 2025). Acceptance rate: 23\% (39 of 169).}
-\vspace{2pt}
-\pubitem{C4}{\textbf{Md Ashikul Haque}, Abusayeed Saifullah, Haibo Zhang. \href{https://doi.org/10.1109/infocom55648.2025.11044466}{\emph{Deep Reinforcement Learning Based Coexistence Management in LPWAN}}. In Proc. IEEE Conference on Computer Communications (INFOCOM 2025). Acceptance rate: 18.7\% (272 of 1458).}
-\vspace{2pt}
-\pubitem{C3}{\textbf{Md Ashikul Haque}, Abusayeed Saifullah. \href{https://doi.org/10.1109/iotdi61053.2024.00017}{\emph{Handling Jamming Attacks in a LoRa Network}}. In Proc. ACM/IEEE Conference on Internet of Things Design and Implementation (IoTDI 2024), CPS-IoT Week 2024.}
-\vspace{2pt}
-\pubitem{C2}{Aakriti Jain, \textbf{Md Ashikul Haque}, Abusayeed Saifullah, Haibo Zhang. \href{https://doi.org/10.1109/rtss62706.2024.00022}{\emph{Burst-MAC: A MAC Protocol for Handling Burst Traffic in LoRa Network}}. In Proc. IEEE Real-Time Systems Symposium (RTSS 2024).}
-\vspace{2pt}
-\pubitem{C1}{\textbf{Md Ashikul Haque}, Abusayeed Saifullah. \href{https://ashikul-haque.github.io/assets/papers/ewsn2023.pdf}{\emph{A Game-Theoretic Approach for Mitigating Jamming Attacks in LPWAN}}. In Proc. International Conference on Embedded Wireless Systems and Networks (EWSN 2023). To our knowledge, the first anti-jamming work in LPWAN.}
+\titem Dean's List Award, Wayne State University \yr{2024}
+\titem Graduate Student Professional Travel Award, College of Engineering, Wayne State University \yr{2024}
+\titem ACM SIGBED Travel Grant, CPS-IoT Week, San Antonio, Texas, USA \yr{2023}
 
-\section{Workshop Publications}
+\sect{Conference Presentations}
 
-\pubitem{W2}{\textbf{Md Ashikul Haque}, Abusayeed Saifullah, Haibo Zhang. \href{https://ashikul-haque.github.io/assets/papers/iclr2026workshop.pdf}{\emph{Coordinating Coexisting Learning Agents in Shared Spectrum via Parameter Space Complementarity}}. Agents in the Wild: Safety, Security, and Beyond (ICLR 2026).}
-\vspace{2pt}
-\pubitem{W1}{\textbf{Md Ashikul Haque}, Dali Ismail, Abusayeed Saifullah. \href{https://doi.org/10.1145/3631461.3631474}{\emph{Scalable Real-Time Control in Industrial Cyber-Physical Systems}}. In Proc. Workshop on Software-Defined Networking for Cyber-Physical System Automation (SDN-CPS 2024), co-located with ICDCN 2024, pp. 353--358.}
+\bitem ReMix: Resource-Reclaiming Mixed-Criticality Scheduling for Industrial IoT\\
+Conference talk at IEEE ICCCN 2026, Honolulu, Hawaii, USA, July 2026
+\bitem Mitigating Jamming Attacks in LoRa Networks: A Defense Strategy against LoRa-Based Jammers\\
+Conference talk at ACM MobiHoc 2025, Rice University, Houston, Texas, USA, October 2025
+\bitem Handling Jamming Attacks in a LoRa Network\\
+Conference talk at ACM/IEEE IoTDI 2024, CPS-IoT Week 2024, Hong Kong, China, May 2024
 
-% Manuscripts Under Review is deliberately kept out of the public CV.
-% The section lives in assets/CV_private.tex, which git does not track.
-% Build the private version with:
-%   xelatex -interaction=nonstopmode -output-directory=assets assets/CV_private.tex
-\ifdefined\PrivateExtras\PrivateExtras\fi
+\sect{Research and Professional Experience}
 
-\section{Selected Talks}
+\gap\org{University of Texas at Dallas}{Richardson, Texas, USA}
+\role{Graduate Research Assistant, Department of Computer Science}{Fall 2025 and Summer 2026}
+\org{Wayne State University}{Detroit, Michigan, USA}
+\role{Graduate Research Assistant, Department of Computer Science}{Fall 2022 -- Summer 2025}
+Advisor at both universities: \textbf{Prof.\ Abusayeed Saifullah}\par\nobreak
+\titem Designed gateway-side and network-server-side defenses that recover LoRa packets under single, LoRa-based, collaborative, and spatially distributed jammers, evaluated on ten-node outdoor testbeds of USRP B200 gateways and commodity LoRa nodes with up to three USRP jammers.
+\titem Built learning-based coexistence management at the LoRa Network Server and disclosure-free coordination among LoRaWAN operators, evaluated on an indoor USRP and Dragino testbed and in PyTorch, NS-3, and a demodulator-level simulation of 32,000 devices across 8 operators.
+\titem Designed real-time medium access and mixed-criticality scheduling for LoRa and industrial wireless sensor-actuator networks, evaluated on LoRa devices and a 15-node Tmote Sky testbed, and built deadline-aware schedulers for LLM serving on vLLM/ROCm and llama.cpp/Vulkan and for cooperative perception on three MentorPi robot cars and in 1,020 CARLA runs.
+\titem Built cross-technology communication from LR-FHSS to LoRa on GNU Radio and USRP B200, evaluated outdoors in a suburban area.
+\titem Designed per-message delivery certificates for direct-to-satellite LR-FHSS, evaluated on a testbed of ten commercial LR-FHSS nodes and six USRP radios driving a calibrated emulator, and signature-bound frame recovery, evaluated in simulation and on an indoor four-USRP testbed.
 
-\entry{\emph{ReMix: Resource-Reclaiming Mixed-Criticality Scheduling for Industrial IoT}}{Jul 2026}\par
-IEEE ICCCN 2026, Honolulu, Hawaii, USA
+\gap\org{Dhaka Electric Supply Company Limited}{Dhaka, Bangladesh}
+\role{Assistant Engineer, ICT Division}{2020 -- 2021}
+\titem Maintained the ICT infrastructure of a metropolitan electricity utility, with monitoring, incident response, and reliability-focused operation of distributed systems.
 
-\vspace{4pt}
+\gap\org{Samsung R\&D Institute Bangladesh}{Dhaka, Bangladesh}
+\role{Software Engineer, IoT Division}{2019 -- 2020}
+\titem Developed user interface and cloud integration features of the SmartThings iOS application, which Samsung reported as serving more than 45 million monthly active users and 5,000 device types in October 2019.
+\titem Developed production C++ components of the Samsung Cloud Client (SCClient), the shared library for cloud connectivity and device communication in SmartThings, exposed them to iOS through a Swift wrapper, and automated the build, packaging, and release workflow of the SCClient iOS team in Bash.
 
-\entry{\emph{Mitigating Jamming Attacks in LoRa Networks: A Defense Strategy against LoRa-Based Jammers}}{Oct 2025}\par
-ACM MobiHoc 2025, Rice University, Houston, USA
+\sect{Teaching Experience}
 
-\vspace{4pt}
+\gap\org{University of Texas at Dallas}{Richardson, Texas, USA}
+\role{Graduate Teaching Assistant, Department of Computer Science}{Spring and Fall 2026}
+Courses: CS 5390 Computer Networks; CS 6352 Performance of Computer Systems and Networks\par\nobreak
+\titem Graded assignments, examinations, and project deliverables; held office hours; supported course projects by clarifying requirements and helping students debug implementations.
 
-\entry{\emph{Handling Jamming Attacks in a LoRa Network}}{May 2024}\par
-ACM/IEEE IoTDI 2024, Hong Kong, China
+\par\vspace{4pt}\role{Guest Lecturer, Department of Computer Science}{2025}
+Course: Internet of Things (graduate)\par\nobreak
+\titem Delivered multiple lectures on LoRa networking and network simulation in NS-3.
 
-\section{Research and Professional Experience}
+\gap\org{Millennium University}{Dhaka, Bangladesh}
+\role{Lecturer, Department of Computer Science}{2018 -- 2019}
+Courses: Structured Programming; Data Communication\par\nobreak
+\titem Instructor of record for both courses: designed lectures, laboratory assignments, and examinations.
 
-\entry{\textbf{Graduate Research Assistant, Dept. of Computer Science}}{2022 to 2026}\par
-Wayne State University, USA (Fall 2022 to Summer 2025) and The University of Texas at Dallas, USA (Fall 2025 and Summer 2026) | Advisor: \textbf{Prof. Abusayeed Saifullah}
-\begin{itemize}
-\item Published 9 conference papers and 2 workshop papers in wireless networking and real-time systems, 10 of them as first author.
-\item Designed gateway-side and network-server-side defenses that recover LoRa packets under single, LoRa-based, collaborative, and spatially distributed jammers, with outdoor evaluation on USRP B200 gateways and commodity LoRa nodes.
-\item Built learning-based coexistence management at the LoRa Network Server and disclosure-free coordination among LoRaWAN operators, evaluated in PyTorch, NS-3, and a demodulator-level simulation of 32,000 devices across 8 operators.
-\item Designed real-time medium access and mixed-criticality scheduling for LoRa and industrial wireless sensor-actuator networks, evaluated on LoRa devices and a 15-node Tmote Sky testbed, and extended the same scheduling method to LLM serving on vLLM/ROCm and to cooperative perception on a three-car MentorPi testbed and CARLA.
-\item Built cross-technology communication from LR-FHSS to LoRa, per-message delivery certificates, and signature-bound frame recovery for direct-to-satellite LR-FHSS on GNU Radio and USRP.
-\end{itemize}
+\sect{Mentoring}
 
-\vspace{4pt}
+\bitem Nasif Ahmed, PhD student, University of Texas at Dallas. Junior doctoral student in our laboratory. I mentor him on identifying new problems and approaching their solutions, on experiments with USRP radios and commercial off-the-shelf (COTS) LoRa devices, and on writing systems papers \yr{January 2025 -- Present}
 
-\entry{\textbf{Assistant Engineer, ICT Division}}{2020 to 2021}\par
-Dhaka Electric Supply Company, Bangladesh
-\begin{itemize}
-\item Maintained ICT infrastructure with monitoring, incident response, and reliability focused operations for distributed utility systems.
-\end{itemize}
+\sect{Professional Service}
 
-\vspace{4pt}
+\subhead{Journal Reviewer:}
+\titem ACM Transactions on Cyber-Physical Systems \yr{2026}
+\titem Pervasive and Mobile Computing (Elsevier) \yr{2023}
 
-\entry{\textbf{Software Engineer, IoT Division}}{2019 to 2020}\par
-Samsung R\&D Institute Bangladesh, Bangladesh
-\begin{itemize}
-\item Worked across both the user interface and the cloud integration layers of the SmartThings iOS application, which Samsung reported serving more than 45 million monthly active users and 5,000 supported device types in October 2019.
-\item Developed production-grade C++ components in the Samsung Cloud Client (SCClient), the shared library that handles cloud connectivity and device communication for SmartThings, and exposed them to iOS through a Swift wrapper.
-\item Built the device onboarding dashboard through which users register, authenticate, and configure new devices.
-\item Automated the entire build, packaging, and release workflow of the SCClient iOS team in Bash, which removed the manual steps from every release and made each build reproducible.
-\end{itemize}
+\subhead{Conference Sub-reviewer:}
+\titem IEEE International Conference on Distributed Computing in Smart Systems and the IoT (DCOSS-IoT) \yr{2026}
+\titem IEEE International Conference on Embedded and Real-Time Computing Systems and Applications (RTCSA) \yr{2024, 2025}
+\titem IEEE International Conference on Sensing, Communication, and Networking (SECON) \yr{2026}
 
-\section{Teaching}
+\subhead{Conference Referee:}
+\titem ACM/IEEE International Conference on Embedded Artificial Intelligence and Sensing Systems (SenSys) \yr{2022, 2024, 2025, 2026}
+\titem IEEE Real-Time Systems Symposium (RTSS) \yr{2023, 2024, 2025, 2026}
+\titem IEEE Real-Time and Embedded Technology and Applications Symposium (RTAS) \yr{2023, 2024}
+\titem International Conference on Embedded Wireless Systems and Networks (EWSN) \yr{2023, 2024, 2025}
+\titem IEEE International Conference on Distributed Computing in Smart Systems and the IoT (DCOSS-IoT) \yr{2023, 2024, 2025}
 
-\entry{\textbf{Graduate Teaching Assistant, Dept. of Computer Science}}{Spring and Fall 2026}\par
-The University of Texas at Dallas, USA\par
-Courses: CS 5390 Computer Networks; CS 6352 Performance of Computer Systems and Networks
-\begin{itemize}
-\item Graded assignments, exams, and project deliverables for both courses.
-\item Helped students understand course concepts through office hours, question answering, and discussion of networking and systems topics.
-\item Supported course projects by clarifying requirements, troubleshooting implementations, and providing feedback on design and debugging.
-\end{itemize}
+\subhead{Journal Referee:}
+\titem IEEE/ACM Transactions on Networking \yr{2024, 2025}
+\titem ACM Transactions on Cyber-Physical Systems \yr{2025}
 
-\vspace{4pt}
+\subhead[2]{Other Service:}
+\titem Student Volunteer, CPS-IoT Week 2023, San Antonio, Texas, USA \yr{2023}
 
-\entry{\textbf{Guest Lecturer, Dept. of Computer Science}}{2025}\par
-The University of Texas at Dallas, USA\par
-Course: Internet of Things (graduate). Delivered multiple lectures on LoRa networking and network simulation in NS-3.
+% Technical Skills commented out on September 26, 2026: uncommon in faculty-candidate CVs.
+% \sect{Technical Skills}
+%
+% \titem \textbf{Programming:} C, C++, Python, MATLAB, SQL, Swift, Bash
+% \titem \textbf{Wireless and SDR:} GNU Radio, USRP B200, LoRa and LR-FHSS physical layers, LoRaWAN, COTS LoRa nodes and gateways, Tmote Sky
+% \titem \textbf{Learning and simulation:} PyTorch, Pandas, NS-3, CARLA, vLLM
+% \titem \textbf{Systems and tools:} Linux, Docker, Git, \LaTeX
 
-\vspace{4pt}
+\sect{References}
 
-\entry{\textbf{Lecturer, Dept. of Computer Science}}{2018 to 2019}\par
-Millennium University, Bangladesh\par
-Courses: Structured Programming; Data Communication. Instructor of record for both courses: designed lectures, laboratory assignments, and examinations.
-
-\section{Mentoring}
-
-\entry{\textbf{Nasif Ahmed, PhD student, The University of Texas at Dallas}}{January 2025 to present}\par
-Junior doctoral student in our laboratory. I mentor him on identifying new problems and approaching their solutions, on experiments with USRP radios and commercial off-the-shelf (COTS) LoRa devices, and on writing systems papers.
-
-\section{Awards and Honors}
-
-\entry{\textbf{Dean's List Award, Wayne State University}}{2024}
-\entry{\textbf{Graduate Student Professional Travel Award, College of Engineering, Wayne State University}}{2024}
-\entry{\textbf{ACM SIGBED Travel Grant, CPS-IoT Week, San Antonio, Texas, USA}}{2023}
-
-\section{Research Funding and Proposals}
-
-\begin{itemize}
-\item Contributed to the writing of an NSF proposal on real-time cooperative perception for connected vehicles, with \textbf{Prof. Abusayeed Saifullah} as principal investigator \hfill 2026
-\item My doctoral research has been supported by five NSF awards (CNS-2301757, CAREER-2306486, CNS-2306745, CNS-2601685, and CNS-2602744) and one ONR award (N00014-23-1-2151), all with \textbf{Prof. Abusayeed Saifullah} as principal investigator \hfill 2022 to present
-\end{itemize}
-
-\section{Professional Service}
-
-\textbf{Journal Reviewer}
-\begin{itemize}
-\item ACM Transactions on Cyber-Physical Systems \hfill 2026
-\item Pervasive and Mobile Computing (Elsevier) \hfill 2023
-\end{itemize}
-
-\textbf{Conference Sub-reviewer}
-\begin{itemize}
-\item IEEE Intl. Conf. on Distributed Computing in Smart Systems and the IoT (DCOSS-IoT) \hfill 2026
-\item IEEE Intl. Conf. on Embedded and Real-Time Computing Systems and Applications (RTCSA) \hfill 2024, 2025
-\item IEEE Intl. Conf. on Sensing, Communication, and Networking (SECON) \hfill 2026
-\end{itemize}
-
-\textbf{Conference Referee}
-\begin{itemize}
-\item ACM/IEEE Intl. Conf. on Embedded Artificial Intelligence and Sensing Systems (SenSys) \hfill 2022, 2024, 2025, 2026
-\item IEEE Real-Time Systems Symposium (RTSS) \hfill 2023, 2024, 2025, 2026
-\item IEEE Real-Time and Embedded Technology and Applications Symposium (RTAS) \hfill 2023, 2024
-\item Intl. Conf. on Embedded Wireless Systems and Networks (EWSN) \hfill 2023, 2024, 2025
-\item IEEE Intl. Conf. on Distributed Computing in Smart Systems and the IoT (DCOSS-IoT) \hfill 2023, 2024, 2025
-\end{itemize}
-
-\textbf{Journal Referee}
-\begin{itemize}
-\item IEEE/ACM Transactions on Networking \hfill 2024, 2025
-\item ACM Transactions on Cyber-Physical Systems \hfill 2025
-\end{itemize}
-
-\textbf{Other Service}
-\begin{itemize}
-\item Student Volunteer, CPS-IoT Week 2023, San Antonio, Texas, USA \hfill 2023
-\end{itemize}
-
-\section{Technical Skills}
-
-\begin{tabularx}{\linewidth}{@{}l@{\hspace{1em}}Y@{}}
-\textbf{Programming:} & C, C++, Python, MATLAB, SQL, Swift, Bash \\
-\textbf{Wireless and SDR:} & GNU Radio, USRP B200, LoRa and LR-FHSS physical layers, LoRaWAN, COTS LoRa nodes and gateways, Tmote Sky \\
-\textbf{Learning and simulation:} & PyTorch, Pandas, NS-3, CARLA, vLLM \\
-\textbf{Systems and tools:} & Linux, Docker, Git, LaTeX \\
-\end{tabularx}
-
-\section{References}
-
-\begin{tabularx}{\linewidth}{@{}X X@{}}
-\textbf{Dr. Abusayeed Saifullah} (advisor) & \textbf{Dr. Haibo Zhang} \\
-Associate Professor, Dept. of Computer Science & Associate Professor, School of Computer Science \\
-University of Texas at Dallas & and Engineering, UNSW Sydney \\
-\href{mailto:abusayeed.saifullah@utdallas.edu}{abusayeed.saifullah@utdallas.edu} & \href{mailto:haibo.zhang@unsw.edu.au}{haibo.zhang@unsw.edu.au} \\
-+1 (972) 883.4171 & \\
-\end{tabularx}
-
-\vspace{8pt}
-
-\begin{tabularx}{\linewidth}{@{}X@{}}
-\textbf{Dr. Venkata Prashant Modekurthy} \\
-Assistant Professor, Dept. of Computer Science \\
-University of Nevada, Las Vegas (UNLV) \\
-\href{mailto:prashant.modekurthy@unlv.edu}{prashant.modekurthy@unlv.edu} \\
-+1 (702) 774.3405 \\
-\end{tabularx}
+\setlength{\refw}{\dimexpr(\linewidth-\ind)/2\relax}%
+\parbox[t]{\refw}{\raggedright\textbf{Dr.\ Abusayeed Saifullah} (advisor)\\
+Associate Professor, Department of Computer Science\\
+University of Texas at Dallas\\
+\href{mailto:abusayeed.saifullah@utdallas.edu}{abusayeed.saifullah@utdallas.edu}\\
++1 (972) 883 4171}%
+\parbox[t]{\refw}{\raggedright\textbf{Dr.\ Venkata Prashant Modekurthy}\\
+Assistant Professor, Department of Computer Science\\
+University of Nevada, Las Vegas\\
+\href{mailto:prashant.modekurthy@unlv.edu}{prashant.modekurthy@unlv.edu}\\
++1 (702) 774 3405}\par
+\vspace{6.7pt}
+\parbox[t]{\refw}{\raggedright\textbf{Dr.\ Haibo Zhang}\\
+Associate Professor, School of Computer Science and Engineering\\
+University of New South Wales, Sydney, Australia\\
+\href{mailto:haibo.zhang@unsw.edu.au}{haibo.zhang@unsw.edu.au}}%
+\parbox[t]{\refw}{\raggedright\textbf{Dr.\ Jason P. Jue}\\
+Professor and Associate Department Head for Graduate Education, Department of Computer Science\\
+University of Texas at Dallas\\
+\href{mailto:jjue@utdallas.edu}{jjue@utdallas.edu}}\par
 
 \end{document}
